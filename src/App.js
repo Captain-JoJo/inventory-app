@@ -1,5 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
+import Amplify, { Auth } from 'aws-amplify';
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
 import './App.css';
 
 function App() {
@@ -11,6 +14,8 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
 
           Edit <code>src/App.js</code> and save to reload.2
+
+          Edit <code>src/App.js</code> and save to reload.3
         </p>
         <a
           className="App-link"

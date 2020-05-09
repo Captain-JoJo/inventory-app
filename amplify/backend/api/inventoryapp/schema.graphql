@@ -1,0 +1,113 @@
+﻿schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+type InventoryApp {
+  id: ID!
+  item: String
+  quantity: String
+  reorder: String
+}
+
+type InventoryAppConnection {
+  items: [InventoryApp]
+  nextToken: String
+}
+
+type Mutation {
+  createInventoryApp(input: CreateInventoryAppInput!): InventoryApp
+  deleteInventoryApp(input: DeleteInventoryAppInput!): InventoryApp
+  updateInventoryApp(input: UpdateInventoryAppInput!): InventoryApp
+}
+
+type Query {
+  getInventoryApp(id: ID!): InventoryApp
+  listInventoryApps(filter: TableInventoryAppFilterInput, limit: Int, nextToken: String): InventoryAppConnection
+}
+
+type Subscription {
+  onCreateInventoryApp(id: ID, item: String, quantity: String, reorder: String): InventoryApp @aws_subscribe(mutations : ["createInventoryApp"])
+  onDeleteInventoryApp(id: ID, item: String, quantity: String, reorder: String): InventoryApp @aws_subscribe(mutations : ["deleteInventoryApp"])
+  onUpdateInventoryApp(id: ID, item: String, quantity: String, reorder: String): InventoryApp @aws_subscribe(mutations : ["updateInventoryApp"])
+}
+
+input CreateInventoryAppInput {
+  item: String
+  quantity: String
+  reorder: String
+}
+
+input DeleteInventoryAppInput {
+  id: ID!
+}
+
+input TableBooleanFilterInput {
+  eq: Boolean
+  ne: Boolean
+}
+
+input TableFloatFilterInput {
+  between: [Float]
+  contains: Float
+  eq: Float
+  ge: Float
+  gt: Float
+  le: Float
+  lt: Float
+  ne: Float
+  notContains: Float
+}
+
+input TableIDFilterInput {
+  beginsWith: ID
+  between: [ID]
+  contains: ID
+  eq: ID
+  ge: ID
+  gt: ID
+  le: ID
+  lt: ID
+  ne: ID
+  notContains: ID
+}
+
+input TableIntFilterInput {
+  between: [Int]
+  contains: Int
+  eq: Int
+  ge: Int
+  gt: Int
+  le: Int
+  lt: Int
+  ne: Int
+  notContains: Int
+}
+
+input TableInventoryAppFilterInput {
+  id: TableIDFilterInput
+  item: TableStringFilterInput
+  quantity: TableStringFilterInput
+  reorder: TableStringFilterInput
+}
+
+input TableStringFilterInput {
+  beginsWith: String
+  between: [String]
+  contains: String
+  eq: String
+  ge: String
+  gt: String
+  le: String
+  lt: String
+  ne: String
+  notContains: String
+}
+
+input UpdateInventoryAppInput {
+  id: ID!
+  item: String
+  quantity: String
+  reorder: String
+}
