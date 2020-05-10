@@ -13,7 +13,7 @@ export const getInventoryApp = /* GraphQL */ `
 `;
 export const listInventoryApps = /* GraphQL */ `
   query ListInventoryApps(
-    $filter: TableInventoryAppFilterInput
+    $filter: ModelInventoryAppFilterInput
     $limit: Int
     $nextToken: String
   ) {
